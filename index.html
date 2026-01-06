@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0f">
+    <title>AISMART SYSTEM</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="glass-bg"></div>
+
+<div class="app-container">
+    <header>
+        <div class="logo">AISMART <span class="accent">CORE</span></div>
+        <div id="status" class="status-indicator">DISCONNECTED</div>
+    </header>
+
+    <div class="action-bar">
+        <button class="btn-primary" onclick="connectBT()">CONNECT BLUETOOTH</button>
+        <button class="btn-danger" onclick="stopAlarm()">DISARM</button>
+    </div>
+
+    <main>
+        <section class="viz-card glass">
+            <div class="chart-container">
+                <canvas id="trendChart"></canvas>
+            </div>
+            <div class="ai-status">
+                <div class="pulse-dot"></div>
+                <span id="ai-thought">Awaiting Link...</span>
+            </div>
+        </section>
+
+        <div class="sensor-grid">
+            <div class="tile glass" id="fire">
+                <span class="tile-icon">🔥</span>
+                <span class="tile-label">THERMAL</span>
+                <div class="tile-value" id="val-fire">STABLE</div>
+            </div>
+            <div class="tile glass" id="smoke">
+                <span class="tile-icon">💨</span>
+                <span class="tile-label">SMOKE</span>
+                <div class="tile-value" id="val-smoke">CLEAN</div>
+            </div>
+            <div class="tile glass" id="laser">
+                <span class="tile-icon">⚡</span>
+                <span class="tile-label">LASER</span>
+                <div class="tile-value" id="val-laser">SECURE</div>
+            </div>
+            <div class="tile glass" id="motion">
+                <span class="tile-icon">🛰️</span>
+                <span class="tile-label">PROXIMITY</span>
+                <div class="tile-value" id="val-motion">CLEAR</div>
+            </div>
+        </div>
+
+        <section class="chat-card glass">
+            <div id="chat-body" class="chat-body">
+                <div class="ai-msg">AISMART Online. Ready for instructions.</div>
+            </div>
+            <div class="chat-input-wrapper">
+                <input type="text" id="chatInput" placeholder="System command..." onkeypress="handleChatKey(event)">
+                <button onclick="sendChat()">SEND</button>
+            </div>
+        </section>
+
+        <section class="archive-section">
+            <h3 class="section-title">NEURAL ARCHIVE</h3>
+            <div id="archive-grid" class="archive-list"></div>
+        </section>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
